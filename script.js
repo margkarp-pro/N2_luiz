@@ -1,6 +1,4 @@
 const dados = []
-let user_tag = 0;
-
 
 function get_user(){
 fetch("https://jsonplaceholder.typicode.com/users")
@@ -50,12 +48,13 @@ function reset_window(type) {
 function create_user_cards() {
     const cardContent = document.querySelector('.card-content');
     cardContent.innerHTML = '';
-    dados.forEach(post => {
+    dados.forEach(user => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
+            <h2>${user.username}</h2>
+            <p>${user.name}</p>
+            <p>${user.email}</p>
         `;
         cardContent.appendChild(card);
     });
