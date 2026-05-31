@@ -55,6 +55,7 @@ function create_user_cards() {
             <h2>${user.username}</h2>
             <p>${user.name}</p>
             <p>${user.email}</p>
+            <button onclick></button>
         `;
         cardContent.appendChild(card);
     });
@@ -67,3 +68,5 @@ function add(){
 function deletes(){
 
 }
+
+reset_window('posts')
