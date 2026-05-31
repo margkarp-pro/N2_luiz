@@ -37,8 +37,12 @@ function create_post_cards(){
     });
 }
 
-function reset_window(){
-
+function reset_window(type) {
+    if (type === 'posts') {
+        get_post();
+    } else if (type === 'users') {
+        get_user();
+    }
 }
 
 function add(){
