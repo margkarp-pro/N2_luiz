@@ -39,8 +39,10 @@ function create_post_cards(){
 
 function reset_window(type) {
     if (type === 'posts') {
+        dados.length = 0;
         get_post();
     } else if (type === 'users') {
+        dados.length = 0;
         get_user();
     }
 }
@@ -57,10 +59,6 @@ function create_user_cards() {
         `;
         cardContent.appendChild(card);
     });
-}
-
-function reset_window(){
-
 }
 
 function add(){
