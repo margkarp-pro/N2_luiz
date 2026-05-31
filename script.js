@@ -8,7 +8,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     return dado_retornado_user.json()
 }).then(function(json){
     dados.push(...json);
-    console.log(dados)
+    create_user_cards();
 })
 }
 
@@ -43,6 +43,24 @@ function reset_window(type) {
     } else if (type === 'users') {
         get_user();
     }
+}
+
+function create_user_cards() {
+    const cardContent = document.querySelector('.card-content');
+    cardContent.innerHTML = '';
+    dados.forEach(post => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.body}</p>
+        `;
+        cardContent.appendChild(card);
+    });
+}
+
+function reset_window(){
+
 }
 
 function add(){
