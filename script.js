@@ -8,7 +8,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     return dado_retornado_user.json()
 }).then(function(json){
     dados.push(...json);
-    console.log(dados)
+    create_user_cards();
 })
 }
 
