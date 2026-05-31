@@ -1,3 +1,5 @@
+const dados = []
+
 function get_user(){
 
 }
