@@ -70,6 +70,12 @@ function create_user_cards() {
 function add_post(){
     const dado_titulo = document.getElementById("title");
     const dado_body = document.getElementById("body");
+
+    if(dado_titulo.value === '' || dado_body.value === ''){
+        alert('Preencha todos os campos para adicionar um post.');
+        return;
+    }
+
     dados.push({
         id: dados.length+1,
         title: dado_titulo.value,
@@ -84,6 +90,12 @@ function add_user(){
     const dado_username = document.getElementById("username");
     const dado_name = document.getElementById("name");
     const dado_email = document.getElementById("email");
+
+    if(dado_username.value === '' || dado_name.value === '' || dado_email.value === ''){
+        alert('Preencha todos os campos para adicionar um usuário.');
+        return;
+    }
+
     dados.push({
         id: dados.length+1,
         username: dado_username.value,
@@ -94,7 +106,6 @@ function add_user(){
     dado_name.value='';
     dado_email.value='';
     create_user_cards();
-    
 }
 
 function deletes(id){
@@ -116,12 +127,12 @@ function create_user_forms(){
     formsContent.innerHTML ='';
     formsContent.innerHTML+=`
         <form>
-            <label for="username">Username: </label><br>
-            <input type="text" id="username" name="username"><br><br>
-            <label for="name">Name: </label><br>
-            <input type="text" id="name" name="name"><br><br>
-            <label for="email">Email: </label><br>
-            <input type="text" id="email" name="email"><br><br>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email: </label>
+            <input type="text" id="email" name="email">
         </form>
         <button onclick="add_user()">adicionar user</button>
     `
@@ -132,14 +143,13 @@ function create_post_forms(){
     formsContent.innerHTML ='';
     formsContent.innerHTML+=`
         <form>
-            <label for="title">Titulo: </label><br>
-            <input type="text" id="title" name="title"><br><br>
-            <label for="body">Texto: </label><br>
-            <input type="text" id="body" name="body"><br><br>
+            <label for="title">Titulo: </label>
+            <input type="text" id="title" name="title">
+            <label for="body">Texto: </label>
+            <input type="text" id="body" name="body">
         </form>
         <button onclick="add_post()">enviar post</button>
     `
 }
 
-reset_window('posts')
-
+reset_window('posts');
