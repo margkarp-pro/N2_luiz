@@ -1,4 +1,5 @@
-const dados = []
+const dados_post = []
+const dados_user = []
 let currentType = 'posts';
 
 function get_user(){
@@ -6,7 +7,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
 .then(function(dado_retornado_user){
     return dado_retornado_user.json()
 }).then(function(json){
-    dados.push(...json);
+    dados_user.push(...json);
     create_user_cards();
 })
 }
@@ -17,7 +18,7 @@ function get_post(){
         return response.json();
     })
     .then(function(json){
-        dados.push(...json);
+        dados_post.push(...json);
         create_post_cards();
     })
 }
@@ -25,7 +26,7 @@ function get_post(){
 function create_post_cards(){
     const cardContent = document.querySelector('.card-content');
     cardContent.innerHTML = '';
-    dados.forEach(post => {
+    dados_post.forEach(post => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
@@ -41,12 +42,18 @@ function reset_window(type) {
     currentType = type;
 
     if (type === 'posts') {
-        dados.length = 0;
-        get_post();
+        if(dados_post.length === 0){
+            get_post();
+        } else {
+            create_post_cards();
+        }
         create_post_forms();
     } else if (type === 'users') {
-        dados.length = 0;
-        get_user();
+        if(dados_user.length === 0){
+            get_user();
+        } else {
+            create_user_cards();
+        }
         create_user_forms();
     }
 }
@@ -54,7 +61,7 @@ function reset_window(type) {
 function create_user_cards() {
     const cardContent = document.querySelector('.card-content');
     cardContent.innerHTML = '';
-    dados.forEach(user => {
+    dados_user.forEach(user => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
@@ -76,8 +83,8 @@ function add_post(){
         return;
     }
 
-    dados.push({
-        id: dados.length+1,
+    dados_post.push({
+        id: dados_post.length+1,
         title: dado_titulo.value,
         body: dado_body.value
     })
@@ -96,8 +103,8 @@ function add_user(){
         return;
     }
 
-    dados.push({
-        id: dados.length+1,
+    dados_user.push({
+        id: dados_user.length+1,
         username: dado_username.value,
         name: dado_name.value,
         email: dado_email.value
@@ -109,10 +116,18 @@ function add_user(){
 }
 
 function deletes(id){
-    const index = dados.findIndex(item => item.id === id);
+    let index;
 
-    if (index !== -1) {
-        dados.splice(index, 1);
+    if (currentType === 'posts') {
+        index = dados_post.findIndex(item => item.id === id);
+        if (index !== -1) {
+            dados_post.splice(index, 1);
+        }
+    } else if (currentType === 'users') {
+        index = dados_user.findIndex(item => item.id === id);
+        if (index !== -1) {
+            dados_user.splice(index, 1);
+        }
     }
 
     if (currentType === 'posts') {
