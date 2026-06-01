@@ -1,4 +1,5 @@
 const dados = []
+let currentType = 'posts';
 
 function get_user(){
 fetch("https://jsonplaceholder.typicode.com/users")
@@ -30,12 +31,15 @@ function create_post_cards(){
         card.innerHTML = `
             <h2>${post.title}</h2>
             <p>${post.body}</p>
+            <button onclick="deletes(${post.id})">Delete</button>
         `;
         cardContent.appendChild(card);
     });
 }
 
 function reset_window(type) {
+    currentType = type;
+
     if (type === 'posts') {
         dados.length = 0;
         get_post();
@@ -55,7 +59,7 @@ function create_user_cards() {
             <h2>${user.username}</h2>
             <p>${user.name}</p>
             <p>${user.email}</p>
-            <button onclick></button>
+            <button onclick="deletes(${user.id})">Delete</button>
         `;
         cardContent.appendChild(card);
     });
@@ -65,8 +69,18 @@ function add(){
 
 }
 
-function deletes(){
+function deletes(id){
+    const index = dados.findIndex(item => item.id === id);
 
+    if (index !== -1) {
+        dados.splice(index, 1);
+    }
+
+    if (currentType === 'posts') {
+        create_post_cards();
+    } else if (currentType === 'users') {
+        create_user_cards();
+    }
 }
 
-reset_window('posts')
+reset_window('posts');
