@@ -134,7 +134,7 @@ function create_post_forms(){
         <form>
             <label for="title">Titulo: </label><br>
             <input type="text" id="title" name="title"><br><br>
-            <label for="body">Testo: </label><br>
+            <label for="body">Texto: </label><br>
             <input type="text" id="body" name="body"><br><br>
         </form>
         <button>enviar post</button>
