@@ -120,19 +120,11 @@ function deletes(id){
 
     if (currentType === 'posts') {
         index = dados_post.findIndex(item => item.id === id);
-        if (index !== -1) {
-            dados_post.splice(index, 1);
-        }
-    } else if (currentType === 'users') {
-        index = dados_user.findIndex(item => item.id === id);
-        if (index !== -1) {
-            dados_user.splice(index, 1);
-        }
-    }
-
-    if (currentType === 'posts') {
+        dados_post.splice(index, 1);
         create_post_cards();
     } else if (currentType === 'users') {
+        index = dados_user.findIndex(item => item.id === id);
+        dados_user.splice(index, 1);
         create_user_cards();
     }
 }
