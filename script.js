@@ -69,4 +69,34 @@ function deletes(){
 
 }
 
+function create_user_forms(){
+    const formsContent = document.querySelector('.forms-content');
+    formsContent.innerHTML ='';
+    formsContent.innerHTML+=`
+        <form>
+            <label for="username">Username: </label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="name">Name: </label><br>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email: </label><br>
+            <input type="text" id="email" name="email"><br><br>
+        </form>
+        <button>adicionar user</button>
+    `
+}
+
+function create_post_forms(){
+    const formsContent = document.querySelector('.forms-content');
+    formsContent.innerHTML ='';
+    formsContent.innerHTML+=`
+        <form>
+            <label for="title">Titulo: </label><br>
+            <input type="text" id="title" name="title"><br><br>
+            <label for="body">Testo: </label><br>
+            <input type="text" id="body" name="body"><br><br>
+        </form>
+        <button>enviar post</button>
+    `
+}
+
 reset_window('posts')
