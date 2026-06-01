@@ -142,3 +142,4 @@ function create_post_forms(){
 }
 
 reset_window('posts')
+
