@@ -110,6 +110,12 @@ function add_user(){
         return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(dado_email.value)) {
+        alert('O campo E-mail está inválido. Use o formato: exemplo@dominio.com');
+        return;
+    }
+
     dados_user.push({
         id: dados_user.length+1,
         username: dado_username.value,
