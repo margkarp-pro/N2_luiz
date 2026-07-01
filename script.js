@@ -12,6 +12,16 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function set_active_button(type) {
+    document.getElementById('btn-posts').classList.remove('active');
+    document.getElementById('btn-users').classList.remove('active');
+    if (type === 'posts') {
+        document.getElementById('btn-posts').classList.add('active');
+    } else {
+        document.getElementById('btn-users').classList.add('active');
+    }
+}
+
 function get_user(){
     show_spinner();
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -52,6 +62,7 @@ function create_post_cards(){
 
 function reset_window(type) {
     currentType = type;
+    set_active_button(type);
 
     if (type === 'posts') {
         if(dados_post.length === 0){

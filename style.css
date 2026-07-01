@@ -245,3 +245,8 @@ footer{
 #modal-cancel:hover {
     background-color: #d1d5db;
 }
+
+nav button.active {
+    background-color: #ff0000;
+    color: white;
+}
