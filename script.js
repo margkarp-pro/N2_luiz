@@ -122,18 +122,32 @@ function add_user(){
     create_user_cards();
 }
 
-function deletes(id){
-    let index;
+let pendingDeleteId = null;
 
+document.getElementById('modal-confirm').addEventListener('click', function () {
+    if (pendingDeleteId === null) return;
+    let index;
     if (currentType === 'posts') {
-        index = dados_post.findIndex(item => item.id === id);
+        index = dados_post.findIndex(item => item.id === pendingDeleteId);
         dados_post.splice(index, 1);
         create_post_cards();
     } else if (currentType === 'users') {
-        index = dados_user.findIndex(item => item.id === id);
+        index = dados_user.findIndex(item => item.id === pendingDeleteId);
         dados_user.splice(index, 1);
         create_user_cards();
     }
+    pendingDeleteId = null;
+    document.getElementById('modal-overlay').style.display = 'none';
+});
+ 
+document.getElementById('modal-cancel').addEventListener('click', function () {
+    pendingDeleteId = null;
+    document.getElementById('modal-overlay').style.display = 'none';
+});
+
+function deletes(id){
+    pendingDeleteId = id;
+    document.getElementById('modal-overlay').style.display = 'flex';
 }
 
 function create_user_forms(){

@@ -182,3 +182,66 @@ footer{
     0%   { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+#modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+ 
+#modal-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 32px 28px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+ 
+#modal-box p {
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #180505;
+    font-weight: bold;
+}
+ 
+#modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+ 
+#modal-confirm {
+    padding: 10px 24px;
+    background-color: #c70b0b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+ 
+#modal-confirm:hover {
+    background-color: #9b0000;
+}
+ 
+#modal-cancel {
+    padding: 10px 24px;
+    background-color: #e5e7eb;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+ 
+#modal-cancel:hover {
+    background-color: #d1d5db;
+}
