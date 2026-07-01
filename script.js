@@ -7,6 +7,11 @@ function show_spinner() {
     cardContent.innerHTML = '<div class="spinner"></div>';
 }
 
+function capitalize(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function get_user(){
     show_spinner();
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -37,8 +42,8 @@ function create_post_cards(){
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
+            <h2>${capitalize(post.title)}</h2>
+            <p>${capitalize(post.body)}</p>
             <button onclick="deletes(${post.id})">Delete</button>
         `;
         cardContent.appendChild(card);
