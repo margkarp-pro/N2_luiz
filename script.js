@@ -2,17 +2,24 @@ const dados_post = []
 const dados_user = []
 let currentType = 'posts';
 
+function show_spinner() {
+    const cardContent = document.querySelector('.card-content');
+    cardContent.innerHTML = '<div class="spinner"></div>';
+}
+
 function get_user(){
-fetch("https://jsonplaceholder.typicode.com/users")
-.then(function(dado_retornado_user){
-    return dado_retornado_user.json()
-}).then(function(json){
-    dados_user.push(...json);
-    create_user_cards();
-})
+    show_spinner();
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(function(dado_retornado_user){
+        return dado_retornado_user.json()
+    }).then(function(json){
+        dados_user.push(...json);
+        create_user_cards();
+    })
 }
 
 function get_post(){
+    show_spinner();
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(function(response){
         return response.json();
