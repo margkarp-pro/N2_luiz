@@ -162,11 +162,11 @@ function create_user_forms(){
     formsContent.innerHTML+=`
         <form>
             <label for="username">Username: </label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" placeholder="ex: joao_silva">
             <label for="name">Name: </label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" placeholder="ex: João Silva">
             <label for="email">Email: </label>
-            <input type="text" id="email" name="email">
+            <input type="text" id="email" name="email" placeholder="ex: joao@dominio.com">
         </form>
         <button onclick="add_user()">adicionar user</button>
     `
@@ -178,9 +178,9 @@ function create_post_forms(){
     formsContent.innerHTML+=`
         <form>
             <label for="title">Titulo: </label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" placeholder="ex: Meu primeiro post">
             <label for="body">Texto: </label>
-            <input type="text" id="body" name="body">
+            <input type="text" id="body" name="body" placeholder="ex: Conteúdo do post...">
         </form>
         <button onclick="add_post()">enviar post</button>
     `
